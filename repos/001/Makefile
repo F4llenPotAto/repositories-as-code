@@ -1,4 +1,4 @@
-prep: 
+init: 
 	terraform init
 
 lint:
