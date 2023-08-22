@@ -1,3 +1,7 @@
+help:
+	@echo "Valid arguments:"
+	@grep -E '^[A-Za-z]+:' Makefile | sed -E 's/://1'
+
 init: 
 	@terraform init
 
