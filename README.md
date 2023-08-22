@@ -12,3 +12,5 @@ This repo should be the first stepping stone to fully capturing all necessary in
 *Steps*
 
 1. Create an empty github repo using Terraform
+
+2. Migrate all variables to locals.tf so automation tools can deploy as needed.
