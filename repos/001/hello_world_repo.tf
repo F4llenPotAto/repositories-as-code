@@ -1,4 +1,4 @@
-resource "github_repository" "first_repo_test" {
+resource "github_repository" "this" {
   name        = local.github_repository_name
   description = local.github_repository_description
 
@@ -8,14 +8,11 @@ resource "github_repository" "first_repo_test" {
 
 }
 
-resource "github_branch_protection_v3" "master_branch_protection" {
-  repository = github_repository.first_repo_test.name
-  branch     = local.protected_main_branch_name
+resource "github_branch_protection" "master_branch_protection" {
+  repository_id = github_repository.this.name
+  pattern       = local.protected_main_branch_name
 
   require_signed_commits = true
 
-  restrictions {
-    users = local.allowed_list_of_users
-  }
 }
 
