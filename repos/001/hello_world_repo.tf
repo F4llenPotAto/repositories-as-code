@@ -1,6 +1,6 @@
 resource "github_repository" "first_repo_test" {
-  name        = "smogdog-repo"
-  description = "First attempt at creating a github repo using Terraform"
+  name        = local.github_repository_name
+  description = local.github_repository_description
 
   visibility = "public"
 
@@ -10,12 +10,12 @@ resource "github_repository" "first_repo_test" {
 
 resource "github_branch_protection_v3" "master_branch_protection" {
   repository = github_repository.first_repo_test.name
-  branch     = "master"
+  branch     = local.protected_main_branch_name
 
   require_signed_commits = true
 
   restrictions {
-    users = ["foo-user"]
+    users = local.allowed_list_of_users
   }
 }
 
